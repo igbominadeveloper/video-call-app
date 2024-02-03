@@ -6,6 +6,8 @@ export default {
       lightgray: '#E2E5ED',
       orange: '#FBBD71',
       darkblue: '#21455E',
+      darkgray: '#707070',
+      lightblue: '#0DABD8',
     },
     fontFamily: {
       body: ['Poppins'],
