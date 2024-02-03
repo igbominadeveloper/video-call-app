@@ -48,6 +48,17 @@ const links: NavLink[] = [
     url: '#',
   },
 ];
+
+const activeMenuIndex = ref<number | null>(null);
+
+const handleClick = (index: number | null) => {
+  if (activeMenuIndex.value && index === activeMenuIndex.value) {
+    activeMenuIndex.value = null;
+    return;
+  }
+
+  activeMenuIndex.value = index;
+};
 </script>
 
 <template>
@@ -60,11 +71,12 @@ const links: NavLink[] = [
     </header>
 
     <nav>
-      <ul class="flex gap-11 items-center h-full z-10">
+      <ul class="flex gap-11 items-center h-full">
         <li
-          v-for="link in links"
+          v-for="(link, index) in links"
           :key="link.title"
           class="text-darkgray cursor-pointer flex items-center group h-full relative"
+          @click="handleClick(index)"
         >
           <span
             class="h-[0.3rem] absolute top-0 w-0 bg-[transparent] group-hover:w-full group-hover:bg-lightblue rounded-sm transition-all duration-300"
@@ -77,10 +89,20 @@ const links: NavLink[] = [
           >
 
           <template v-if="link.children?.length">
-            <Icon class="ml-1" name="material-symbols:keyboard-arrow-down" />
+            <Icon
+              v-if="activeMenuIndex === index"
+              class="ml-1"
+              name="material-symbols:keyboard-arrow-up"
+            />
+            <Icon
+              class="ml-1"
+              name="material-symbols:keyboard-arrow-down"
+              v-else
+            />
 
             <div
-              class="border -bottom-[11.3rem] z-20 border-lightgray divide-y divide-lightgray rounded-lg shadow-md absolute flex flex-col min-w-max"
+              class="border top-[4rem] z-20 border-lightgray divide-y divide-lightgray rounded-lg shadow-md absolute flex flex-col min-w-max bg-white"
+              v-if="activeMenuIndex === index"
             >
               <nuxt-link
                 :title="childLink.title"
@@ -96,11 +118,11 @@ const links: NavLink[] = [
     </nav>
 
     <div class="flex items-center w-full">
-      <nuxt-link class="font-bold mr-4 pr-4 py-2 border-r border-darkblue/70"
+      <nuxt-link class="font-bold mr-4 pr-5 py-2 border-r border-darkblue/70"
         >Help</nuxt-link
       >
 
-      <div class="flex items-center gap-3 pl-4">
+      <div class="flex items-center gap-3 pl-4 text-sm">
         <div class="size-12 rounded-lg bg-orange/50"></div>
         <div class="flex justify-between flex-col gap-2">
           <h1 class="font-bold">Cody Fisher</h1>

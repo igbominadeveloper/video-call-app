@@ -8,6 +8,7 @@ export default {
       darkblue: '#21455E',
       darkgray: '#707070',
       lightblue: '#0DABD8',
+      white: '#ffffff',
     },
     fontFamily: {
       body: ['Poppins'],
