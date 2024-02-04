@@ -52,7 +52,7 @@ const links: NavLink[] = [
 ];
 
 const activeMenuIndex = ref<number | null>(null);
-const subMenuRef = ref<HTMLElement | null>(null);
+const menuRef = ref<HTMLElement | null>(null);
 
 const handleClick = (index: number | null) => {
   if (activeMenuIndex.value && index === activeMenuIndex.value) {
@@ -60,13 +60,10 @@ const handleClick = (index: number | null) => {
     return false;
   }
 
-  if (subMenuRef.value) {
-    subMenuRef.value.focus();
-  }
   activeMenuIndex.value = index;
 };
 
-onClickOutside(subMenuRef, () => (activeMenuIndex.value = null));
+onClickOutside(menuRef, () => (activeMenuIndex.value = null));
 </script>
 
 <template>
@@ -79,7 +76,7 @@ onClickOutside(subMenuRef, () => (activeMenuIndex.value = null));
     </header>
 
     <nav>
-      <ul class="flex gap-11 items-center h-full" ref="subMenuRef">
+      <ul class="flex gap-11 items-center h-full" ref="menuRef">
         <li
           v-for="(link, index) in links"
           :key="link.title"
