@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core';
+
 type NavLinkBase = {
   title: string;
   url?: string;
@@ -50,15 +52,21 @@ const links: NavLink[] = [
 ];
 
 const activeMenuIndex = ref<number | null>(null);
+const subMenuRef = ref<HTMLElement | null>(null);
 
 const handleClick = (index: number | null) => {
   if (activeMenuIndex.value && index === activeMenuIndex.value) {
     activeMenuIndex.value = null;
-    return;
+    return false;
   }
 
+  if (subMenuRef.value) {
+    subMenuRef.value.focus();
+  }
   activeMenuIndex.value = index;
 };
+
+onClickOutside(subMenuRef, () => (activeMenuIndex.value = null));
 </script>
 
 <template>
@@ -71,7 +79,7 @@ const handleClick = (index: number | null) => {
     </header>
 
     <nav>
-      <ul class="flex gap-11 items-center h-full">
+      <ul class="flex gap-11 items-center h-full" ref="subMenuRef">
         <li
           v-for="(link, index) in links"
           :key="link.title"
@@ -102,7 +110,10 @@ const handleClick = (index: number | null) => {
 
             <div
               class="border top-[4rem] z-20 border-lightgray divide-y divide-lightgray rounded-lg shadow-md absolute flex flex-col min-w-max bg-white"
-              v-if="activeMenuIndex === index"
+              :class="{
+                visible: activeMenuIndex === index,
+                invisible: activeMenuIndex !== index,
+              }"
             >
               <nuxt-link
                 :title="childLink.title"
