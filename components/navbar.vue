@@ -71,7 +71,11 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
     class="h-[5rem] border-b border-b-lightgray grid grid-cols-[306px_2fr_1fr]"
   >
     <header class="flex gap-3 items-center pl-14">
-      <div class="text-orange border-4 size-10 rounded-full" />
+      <div
+        class="bg-orange relative size-12 rounded-xl flex items-center justify-center"
+      >
+        <div class="rounded-full absolute size-8 bg-white"></div>
+      </div>
       <h1 class="text-darkblue font-bold text-2xl">Adilo</h1>
     </header>
 
