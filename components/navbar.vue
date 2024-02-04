@@ -84,12 +84,12 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
           @click="handleClick(index)"
         >
           <span
-            class="h-[0.3rem] absolute top-0 w-0 bg-[transparent] group-hover:w-full group-hover:bg-lightblue rounded-sm transition-all duration-300"
+            class="h-[0.3rem] absolute top-0 w-0 bg-[transparent] group-hover:w-full group-hover:bg-lighterblue rounded-sm transition-all duration-300"
           ></span>
           <nuxt-link
             :title="link.title"
             :to="link.url"
-            class="cursor-pointer hover:text-lightblue"
+            class="cursor-pointer hover:text-lighterblue"
             >{{ link.title }}</nuxt-link
           >
 
@@ -115,7 +115,7 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
               <nuxt-link
                 :title="childLink.title"
                 :to="childLink.url"
-                class="px-6 py-5 cursor-pointer hover:text-lightblue"
+                class="px-6 py-5 cursor-pointer hover:text-lighterblue"
                 v-for="childLink in link.children"
                 >{{ childLink.title }}</nuxt-link
               >

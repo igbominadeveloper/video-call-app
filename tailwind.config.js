@@ -7,7 +7,8 @@ export default {
       orange: '#FBBD71',
       darkblue: '#21455E',
       darkgray: '#707070',
-      lightblue: '#0DABD8',
+      lighterblue: '#0DABD8',
+      lightblue: '#0DABD838',
       white: '#ffffff',
     },
     fontFamily: {
