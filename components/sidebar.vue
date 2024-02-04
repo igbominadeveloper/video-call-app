@@ -13,7 +13,7 @@ const links: NavLink[] = [
   },
   {
     title: 'Requested',
-    url: 'requested',
+    url: '/requested',
     iconName: 'ph:share-network',
   },
 ];
@@ -27,10 +27,11 @@ const links: NavLink[] = [
         :key="link.title"
         class="hover:bg-lightgray border border-[transparent] hover:border-lightblue rounded-xl"
       >
+        <!--TODO for whatever reason, the link styles don't work right now -->
         <nuxt-link
           :to="link.url"
-          exactActiveClass="bg-lightgray border border-lightblue"
-          activeClass="bg-lightgray border border-lightblue"
+          active-class="favour-afolayan"
+          exact-active-class="favour-afolayan"
           class="flex px-10 py-4 items-center gap-4 text-darkblue font-normal text-sm"
         >
           <Icon :name="link.iconName" class="w-[26px] h-[21px]" />
@@ -40,5 +41,3 @@ const links: NavLink[] = [
     </ul>
   </nav>
 </template>
-
-<style scoped></style>
