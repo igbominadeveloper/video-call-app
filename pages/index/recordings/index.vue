@@ -108,8 +108,10 @@ const showNewRequestModal = ref(false);
     <video-list v-else :recordings="recordings" />
   </div>
 
-  <video-new-recording
-    v-if="showNewRequestModal"
-    @close="showNewRequestModal = false"
-  />
+  <client-only>
+    <video-new-recording
+      :open="showNewRequestModal"
+      @close="showNewRequestModal = false"
+    />
+  </client-only>
 </template>
