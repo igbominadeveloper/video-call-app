@@ -27,20 +27,25 @@ onBeforeUnmount(() => {
   >
     <div class="bg-black opacity-40 w-full h-full absolute" />
 
-    <div class="min-h-80 min-w-80 bg-white z-10 rounded-lg" ref="modalRef">
+    <div class="min-h-80 min-w-96 bg-white z-10 rounded-lg" ref="modalRef">
       <!-- modal header -->
-      <header class="flex items-center justify-between w-full">
-        <h1 class="text-lg text-darkblue">
+      <header
+        class="flex items-center justify-between w-full p-4 px-6 border-b border-b-lightgray"
+      >
+        <h1 class="text-lg text-darkblue font-bold">
           <slot name="title" />
         </h1>
 
-        <button class="border-0" @click="emit('close')">
+        <button
+          class="border-0 opacity-65 hover:opacity-100"
+          @click="emit('close')"
+        >
           <Icon name="ph:x" class="size-6" />
         </button>
       </header>
 
       <!-- modal body -->
-      <div class="z-20 w-full">
+      <div class="w-full p-4 px-6">
         <slot />
       </div>
     </div>
