@@ -15,6 +15,7 @@ export default {
       white: '#ffffff',
       black: '#000000',
       red: '#EF5350',
+      green: '#0AD688',
     },
     fontFamily: {
       body: ['Poppins'],
