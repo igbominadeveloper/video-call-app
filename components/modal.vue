@@ -26,18 +26,23 @@ const closeModal = () => {
 
 onClickOutside(modalRef, closeModal);
 
-onMounted(() => {
-  document.body.style.overflow = 'hidden';
-});
-
-onBeforeUnmount(() => {
+const resetOverflow = () => {
   document.body.style.overflow = bodyOverflow;
   bodyOverflow = '';
+};
+
+onBeforeUnmount(() => {
+  resetOverflow();
 });
 
 watch(
   () => props.open,
   (open: boolean) => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      resetOverflow();
+    }
     showModal.value = open;
   }
 );
@@ -58,7 +63,10 @@ watch(
     >
       <div class="bg-black opacity-40 w-full h-full absolute" />
 
-      <div class="min-h-80 min-w-96 bg-white z-10 rounded-lg" ref="modalRef">
+      <div
+        class="min-h-96 min-w-[28rem] bg-white z-10 rounded-lg"
+        ref="modalRef"
+      >
         <!-- modal header -->
         <header
           class="flex items-center justify-between w-full p-4 px-6 border-b border-b-lightgray"
