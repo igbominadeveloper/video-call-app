@@ -12,6 +12,7 @@ export default {
       lighterblue: '#0DABD8',
       lightblue: '#0DABD838',
       white: '#ffffff',
+      black: '#000000',
     },
     fontFamily: {
       body: ['Poppins'],

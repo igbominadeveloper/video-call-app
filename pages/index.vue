@@ -16,5 +16,3 @@ useHead({
     <nuxt-page />
   </div>
 </template>
-
-<style scoped></style>

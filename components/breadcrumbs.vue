@@ -15,7 +15,7 @@ const breadcrumbs = computed(() =>
       <li
         v-for="(breadcrumb, index) in breadcrumbs"
         :key="breadcrumb.label"
-        class="text-darkgray"
+        class="text-darkgray text-sm"
       >
         <nuxt-link :to="breadcrumb.to">
           {{ breadcrumb.label }}
