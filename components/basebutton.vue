@@ -44,7 +44,7 @@ const shapeMap = new Map<Shape, string | undefined>([
 const textClass = computed(() => {
   if (props.type === 'secondary')
     return 'text-darkgray hover:border hover:border-darkgray';
-  return 'text-white opacity-90 hover:opacity-100';
+  return 'text-white opacity-80 hover:opacity-100';
 });
 
 const borderClass = computed(() => {
