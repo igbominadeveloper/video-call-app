@@ -8,19 +8,19 @@ type NavLink = {
 const links: NavLink[] = [
   {
     title: 'My Recordings',
-    url: '/',
+    url: 'recordings',
     iconName: 'et:video',
   },
   {
     title: 'Requested',
-    url: '/requested',
+    url: 'requested',
     iconName: 'ph:share-network',
   },
 ];
 </script>
 
 <template>
-  <nav>
+  <nav class="bg-lightergray">
     <ul class="flex flex-col pt-9 px-4 gap-7">
       <li
         v-for="link in links"

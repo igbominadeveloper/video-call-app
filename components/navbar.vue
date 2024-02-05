@@ -70,13 +70,15 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
   <div
     class="h-[5rem] border-b border-b-lightgray grid grid-cols-[306px_2fr_1fr]"
   >
-    <header class="flex gap-3 items-center pl-14">
-      <div
-        class="bg-orange relative size-12 rounded-xl flex items-center justify-center"
-      >
-        <div class="rounded-full absolute size-8 bg-white"></div>
-      </div>
-      <h1 class="text-darkblue font-bold text-2xl">Adilo</h1>
+    <header>
+      <nuxt-link to="/" class="h-full flex gap-3 items-center pl-14">
+        <div
+          class="bg-orange relative size-12 rounded-xl flex items-center justify-center"
+        >
+          <div class="rounded-full absolute size-8 bg-white"></div>
+        </div>
+        <h1 class="text-darkblue font-bold text-2xl">Adilo</h1>
+      </nuxt-link>
     </header>
 
     <nav>
