@@ -83,6 +83,8 @@ const recordings: Recording[] = [
     lastModified: '2024-02-01T13:15:00Z',
   },
 ];
+
+const showNewRequestModal = ref(false);
 </script>
 
 <template>
@@ -94,7 +96,7 @@ const recordings: Recording[] = [
 
     <section class="flex items-center gap-3">
       <video-filters />
-      <video-buttons />
+      <video-buttons @new-request="showNewRequestModal = true" />
     </section>
   </div>
 
@@ -105,4 +107,9 @@ const recordings: Recording[] = [
     <!-- video list -->
     <video-list v-else :recordings="recordings" />
   </div>
+
+  <video-new-recording
+    v-if="showNewRequestModal"
+    @close="showNewRequestModal = false"
+  />
 </template>
