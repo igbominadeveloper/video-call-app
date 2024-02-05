@@ -21,5 +21,8 @@
     "nuxt-svgo": "^4.0.0",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1"
   }
 }

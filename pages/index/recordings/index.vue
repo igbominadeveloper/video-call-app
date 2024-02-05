@@ -24,6 +24,11 @@ useHead({
     </section>
   </div>
 
-  <!-- empty video call -->
-  <video-empty />
+  <div class="mt-11 mb-32">
+    <!-- empty video call -->
+    <video-empty v-if="false" />
+
+    <!-- video list -->
+    <video-list />
+  </div>
 </template>
