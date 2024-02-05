@@ -25,13 +25,10 @@ const links: NavLink[] = [
       <li
         v-for="link in links"
         :key="link.title"
-        class="hover:bg-lightgray border border-[transparent] hover:border-lightblue rounded-xl"
+        class="hover:bg-lightgray border border-[transparent] hover:border-lightblue rounded-xl transition-all duration-200"
       >
-        <!--TODO for whatever reason, the link styles don't work right now -->
         <nuxt-link
           :to="link.url"
-          active-class="favour-afolayan"
-          exact-active-class="favour-afolayan"
           class="flex px-10 py-4 items-center gap-4 text-darkblue font-normal text-base"
         >
           <Icon :name="link.iconName" class="w-[26px] h-[21px]" />
@@ -41,3 +38,10 @@ const links: NavLink[] = [
     </ul>
   </nav>
 </template>
+
+<style scoped>
+.router-link-active,
+.router-link-exact-active {
+  @apply bg-lightgray border border-lightblue rounded-xl;
+}
+</style>
