@@ -18,7 +18,7 @@
   </div>
 
   <div class="mt-11 flex gap-[79px] items-center mb-36">
-    <NuxtImg src="/screenshot.png" class="shadow-md" />
+    <NuxtImg src="/screenshot.png" class="shadow-md max-w-[491px]" />
 
     <div class="flex flex-col gap-9">
       <p class="max-w-[378px] text-darkblue font-medium text-xl">
