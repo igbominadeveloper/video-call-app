@@ -23,4 +23,7 @@ useHead({
       <video-buttons />
     </section>
   </div>
+
+  <!-- empty video call -->
+  <video-empty />
 </template>

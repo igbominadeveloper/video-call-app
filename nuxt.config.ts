@@ -14,4 +14,7 @@ export default defineNuxtConfig({
       Poppins: true,
     },
   },
+  image: {
+    dir: 'assets',
+  },
 });

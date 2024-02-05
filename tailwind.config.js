@@ -9,6 +9,7 @@ export default {
       orange: '#FBBD71',
       darkblue: '#21455E',
       darkgray: '#707070',
+      lightestblue: '#A3BAC6',
       lighterblue: '#0DABD8',
       lightblue: '#0DABD838',
       white: '#ffffff',
@@ -17,6 +18,12 @@ export default {
     },
     fontFamily: {
       body: ['Poppins'],
+    },
+    fontSize: {
+      xs: '10px',
+      sm: '14px',
+      lg: '18px',
+      xl: '24px',
     },
     extend: {},
   },
