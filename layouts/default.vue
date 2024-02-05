@@ -2,7 +2,7 @@
   <div
     class="min-h-dvh bg-white flex flex-col font-body border-x border-lightgray mx-auto"
   >
-    <navbar />
+    <navbar class="sticky top-0 bg-white z-10" />
 
     <div class="h-full flex flex-1">
       <sidebar class="max-w-[290px] flex-1" />

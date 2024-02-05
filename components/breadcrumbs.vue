@@ -23,6 +23,7 @@ const breadcrumbs = computed(() =>
 
         <Icon
           name="material-symbols-light:chevron-right"
+          class="size-5"
           v-if="breadcrumbs.length > 1 && index < breadcrumbs.length - 1"
         />
       </li>
