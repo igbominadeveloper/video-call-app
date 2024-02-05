@@ -32,7 +32,7 @@ const links: NavLink[] = [
           :to="link.url"
           active-class="favour-afolayan"
           exact-active-class="favour-afolayan"
-          class="flex px-10 py-4 items-center gap-4 text-darkblue font-normal text-sm"
+          class="flex px-10 py-4 items-center gap-4 text-darkblue font-normal text-base"
         >
           <Icon :name="link.iconName" class="w-[26px] h-[21px]" />
           {{ link.title }}

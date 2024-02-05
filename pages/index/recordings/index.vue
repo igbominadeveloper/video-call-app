@@ -18,8 +18,9 @@ useHead({
       <p class="text-darkgray text-[24px]">{{ videoCount }}</p>
     </section>
 
-    <section>
+    <section class="flex items-center gap-3">
       <video-filters />
+      <video-buttons />
     </section>
   </div>
 </template>

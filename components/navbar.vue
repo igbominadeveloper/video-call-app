@@ -81,8 +81,8 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
       </nuxt-link>
     </header>
 
-    <nav>
-      <ul class="flex gap-11 items-center h-full" ref="menuRef">
+    <nav ref="menuRef">
+      <ul class="flex gap-11 items-center h-full">
         <li
           v-for="(link, index) in links"
           :key="link.title"

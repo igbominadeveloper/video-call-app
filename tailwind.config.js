@@ -5,7 +5,7 @@ export default {
     colors: {
       lightgray: '#E2E5ED',
       lightergray: '#EBF2F6',
-      darkgray: '#637C8E',
+      darkergray: '#637C8E',
       orange: '#FBBD71',
       darkblue: '#21455E',
       darkgray: '#707070',
@@ -13,6 +13,7 @@ export default {
       lightblue: '#0DABD838',
       white: '#ffffff',
       black: '#000000',
+      red: '#EF5350',
     },
     fontFamily: {
       body: ['Poppins'],
