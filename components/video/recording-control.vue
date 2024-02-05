@@ -13,6 +13,12 @@ watch(
   () => props.selected,
   (on: boolean) => {
     selected.value = on;
+  }
+);
+
+watch(
+  () => selected.value,
+  (on: boolean) => {
     emit('selected', on);
   }
 );
