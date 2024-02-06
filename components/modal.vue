@@ -54,7 +54,7 @@ watch(
     leave-active-class="transition-all ease-in-out duration-300"
     enter-from-class="opacity-0 transform -translate-y-20"
     enter-to-class="opacity-100 translate-y-0"
-    leave-to-class="opacity-0"
+    leave-to-class="opacity-0 -translate-y-20"
     appear
   >
     <div
