@@ -4,10 +4,10 @@
   >
     <navbar class="sticky top-0 bg-white z-10" />
 
-    <div class="h-full flex flex-1">
-      <sidebar class="max-w-[290px] flex-1" />
-      <main class="flex-1">
-        <div class="px-40 py-6 flex flex-col gap-4">
+    <div class="h-full grid grid-cols-[290px_1fr]">
+      <sidebar class="h-full fixed" />
+      <main class="ml-[290px] col-span-full">
+        <div class="px-40 py-6 flex flex-col gap-4 w-full">
           <breadcrumbs />
           <nuxt-page />
         </div>
