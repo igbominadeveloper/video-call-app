@@ -22,19 +22,28 @@ const microphoneSelected = computed(() => permissions.value.has('microphone'));
     <template #title>New Recording</template>
     <p class="text-darkgray">Save the recording in</p>
 
-    <div class="flex flex-col mt-3 gap-4">
+    <div class="flex flex-col mt-5 gap-7">
       <video-recording-control
-        @selected="handleControl('screen')"
+        title="Record screen"
         :selected="screenSelected"
+        @selected="handleControl('screen')"
       />
       <video-recording-control
-        @selected="handleControl('camera')"
+        title="Record camera"
         :selected="cameraSelected"
+        @selected="handleControl('camera')"
       />
       <video-recording-control
+        title="Record microphone"
         @selected="handleControl('microphone')"
         :selected="microphoneSelected"
       />
+
+      <div class="flex flex-1 px-10 mt-5">
+        <basebutton type="primary" class="flex-1" shape="largestRound"
+          >Start Recording</basebutton
+        >
+      </div>
     </div>
   </modal>
 </template>

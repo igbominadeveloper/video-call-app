@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   selected: boolean;
+  title: string;
 }>();
 
 const emit = defineEmits<{
@@ -26,7 +27,7 @@ watch(
 
 <template>
   <div class="flex items-center justify-between">
-    <p class="text-darkblue font-medium">Record screen</p>
+    <p class="text-darkblue font-medium">{{ title }}</p>
     <switch-toggle v-model="selected" />
   </div>
 </template>
