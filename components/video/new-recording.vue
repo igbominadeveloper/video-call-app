@@ -1,20 +1,11 @@
 <script setup lang="ts">
-type Control = 'microphone' | 'screen' | 'camera';
-const permissions = ref<Map<Control, boolean>>(new Map());
+const { devices, handleControl, requestPermission } = useMediaDevices();
 
-const handleControl = (control: Control) => {
-  const isSet = permissions.value.has(control);
-  if (isSet) {
-    permissions.value.delete(control);
-    return;
-  }
+const screenSelected = computed(() => devices.value.has('screen'));
+const cameraSelected = computed(() => devices.value.has('video'));
+const microphoneSelected = computed(() => devices.value.has('audio'));
 
-  permissions.value.set(control, true);
-};
-
-const screenSelected = computed(() => permissions.value.has('screen'));
-const cameraSelected = computed(() => permissions.value.has('camera'));
-const microphoneSelected = computed(() => permissions.value.has('microphone'));
+const error = useError();
 </script>
 
 <template>
@@ -31,16 +22,21 @@ const microphoneSelected = computed(() => permissions.value.has('microphone'));
       <video-recording-control
         title="Record camera"
         :selected="cameraSelected"
-        @selected="handleControl('camera')"
+        @selected="handleControl('video')"
       />
       <video-recording-control
         title="Record microphone"
-        @selected="handleControl('microphone')"
+        @selected="handleControl('audio')"
         :selected="microphoneSelected"
       />
+      <p class="my-2">{{ error?.message }}</p>
 
       <div class="flex flex-1 px-10 mt-5">
-        <basebutton type="primary" class="flex-1" shape="largestRound"
+        <basebutton
+          type="primary"
+          @click="requestPermission"
+          class="flex-1"
+          shape="largestRound"
           >Start Recording</basebutton
         >
       </div>

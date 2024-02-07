@@ -8,9 +8,11 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     open: boolean;
+    dismissOnClickOutside?: boolean;
   }>(),
   {
     open: false,
+    dismissOnClickOutside: true,
   }
 );
 
@@ -24,7 +26,9 @@ const closeModal = () => {
   emit('close');
 };
 
-onClickOutside(modalRef, closeModal);
+if (props.dismissOnClickOutside) {
+  onClickOutside(modalRef, closeModal);
+}
 
 const resetOverflow = () => {
   document.body.style.overflow = bodyOverflow;

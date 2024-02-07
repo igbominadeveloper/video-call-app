@@ -9,6 +9,8 @@ declare global {
     size: number;
     lastModified: string;
   }
+
+  type Control = 'audio' | 'screen' | 'video';
 }
 
 export {};
