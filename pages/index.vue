@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   name: 'Snapbyte',
+  layout: 'sidebar',
   redirect() {
     return '/recordings';
   },
