@@ -85,6 +85,10 @@ const recordings: Recording[] = [
 ];
 
 const showNewRequestModal = ref(false);
+
+const goLive = () => {
+  useRouter().push('/recordings/live');
+};
 </script>
 
 <template>
@@ -96,7 +100,10 @@ const showNewRequestModal = ref(false);
 
     <section class="flex items-center gap-3">
       <video-filters />
-      <video-buttons @new-request="showNewRequestModal = true" />
+      <video-buttons
+        @new-request="showNewRequestModal = true"
+        @go-live="goLive"
+      />
     </section>
   </div>
 

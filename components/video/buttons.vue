@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const emit = defineEmits<{
   (e: 'new-request'): void;
+  (e: 'go-live'): void;
 }>();
 </script>
 
@@ -15,7 +16,7 @@ const emit = defineEmits<{
       <Icon name="heroicons:video-camera" class="size-4" />New Request
     </basebutton>
 
-    <basebutton type="danger" shape="largestRound">
+    <basebutton type="danger" shape="largestRound" @click="emit('go-live')">
       <Icon name="ph:record" class="size-4 relative">
         <span class="text-black absolute">REC</span>
       </Icon>

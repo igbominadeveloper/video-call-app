@@ -4,6 +4,7 @@ export default function useMediaDevices() {
   const devices = useMediaPermissions();
   const permissions = computed(() => Object.fromEntries(devices.value));
   const isStreaming = ref(false);
+  const currentStream = ref<MediaStream | null>(null);
 
   const handleControl = (control: Control) => {
     const isSet = devices.value.has(control);
@@ -13,6 +14,11 @@ export default function useMediaDevices() {
     }
 
     devices.value.set(control, true);
+  };
+
+  const stopStream = () => {
+    currentStream.value?.getVideoTracks()[0].stop();
+    currentStream.value?.getAudioTracks()[0].stop();
   };
 
   const requestPermission = () => {
@@ -38,9 +44,10 @@ export default function useMediaDevices() {
         const video = document.querySelector(
           'video#video-stream'
         ) as HTMLVideoElement;
+
+        currentStream.value = stream;
         video.srcObject = stream;
         video.autoplay = true;
-
         isStreaming.value = true;
       });
     }
@@ -48,9 +55,10 @@ export default function useMediaDevices() {
 
   return {
     devices,
-    handleControl,
-    permissions,
-    requestPermission,
     isStreaming,
+    permissions,
+    handleControl,
+    requestPermission,
+    stopStream,
   };
 }
