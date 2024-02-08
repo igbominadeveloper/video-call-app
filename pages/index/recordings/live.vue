@@ -2,27 +2,14 @@
 definePageMeta({
   layout: 'default',
 });
-const { devices, permissions, requestPermission } = useMediaDevices();
-
-const videoRef = ref<HTMLVideoElement | null>(null);
-const isPlaying = ref(false);
+const { devices, permissions, requestPermission, isStreaming } =
+  useMediaDevices();
 
 onMounted(() => {
   if (process.client) {
     requestPermission();
   }
 });
-
-watch(
-  () => videoRef,
-  (video) => {
-    debugger;
-    if (!video.value) return;
-    if (!video.value.paused && !video.value.ended) {
-      isPlaying.value = true;
-    }
-  }
-);
 </script>
 
 <template>
@@ -36,14 +23,12 @@ watch(
         <span class="text-darkergray text-sm"> Live preview </span>
       </header>
 
-      <div class="min-w-[965px] min-h-[518px] rounded-lg">
-        <video
-          id="video-stream"
-          class="w-full h-full"
-          ref="videoRef"
-          v-show="isPlaying"
+      <div class="min-w-[965px] min-h-[518px] rounded-lg relative">
+        <video id="video-stream" class="w-full h-full" />
+        <div
+          class="bg-darkblue w-full h-full absolute inset-0"
+          v-show="!isStreaming"
         />
-        <div class="bg-darkblue w-full h-full" v-show="!isPlaying" />
       </div>
     </div>
 

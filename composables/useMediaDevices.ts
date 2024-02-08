@@ -3,6 +3,7 @@ import useMediaPermissions from '~/stores/mediaPermissions';
 export default function useMediaDevices() {
   const devices = useMediaPermissions();
   const permissions = computed(() => Object.fromEntries(devices.value));
+  const isStreaming = ref(false);
 
   const handleControl = (control: Control) => {
     const isSet = devices.value.has(control);
@@ -34,12 +35,22 @@ export default function useMediaDevices() {
 
       navigator.mediaDevices.getUserMedia(permissions.value).then((stream) => {
         const videoTracks = stream.getVideoTracks();
-        (
-          document.querySelector('video#video-stream') as HTMLVideoElement
-        ).srcObject = stream;
+        const video = document.querySelector(
+          'video#video-stream'
+        ) as HTMLVideoElement;
+        video.srcObject = stream;
+        video.autoplay = true;
+
+        isStreaming.value = true;
       });
     }
   };
 
-  return { devices, handleControl, permissions, requestPermission };
+  return {
+    devices,
+    handleControl,
+    permissions,
+    requestPermission,
+    isStreaming,
+  };
 }
