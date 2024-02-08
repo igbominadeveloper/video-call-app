@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const { devices, handleControl, requestPermission } = useMediaDevices();
+const { devices, handleControl } = useMediaDevices();
 
 const screenSelected = computed(() => devices.value.has('screen'));
 const cameraSelected = computed(() => devices.value.has('video'));
 const microphoneSelected = computed(() => devices.value.has('audio'));
 
 const error = useError();
+
+const goLive = () => useRouter().push('/recordings/live');
 </script>
 
 <template>
@@ -34,7 +36,7 @@ const error = useError();
       <div class="flex flex-1 px-10 mt-5">
         <basebutton
           type="primary"
-          @click="requestPermission"
+          @click="goLive"
           class="flex-1"
           shape="largestRound"
           >Start Recording</basebutton

@@ -29,7 +29,7 @@ const links: NavLink[] = [
       >
         <nuxt-link
           :to="link.url"
-          class="flex px-10 py-4 items-center gap-4 text-darkblue font-normal text-base"
+          class="flex px-10 py-4 items-center gap-4 border border-[transparent] text-darkblue font-normal text-base"
         >
           <Icon :name="link.iconName" class="w-[26px] h-[21px]" />
           {{ link.title }}

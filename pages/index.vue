@@ -2,9 +2,6 @@
 definePageMeta({
   name: 'Snapbyte',
   layout: 'sidebar',
-  redirect() {
-    return '/recordings';
-  },
 });
 
 useHead({
@@ -14,6 +11,6 @@ useHead({
 
 <template>
   <div>
-    <nuxt-page />
+    <!-- <nuxt-page /> -->
   </div>
 </template>

@@ -1,8 +1,7 @@
 import useMediaPermissions from '~/stores/mediaPermissions';
 
-const devices = useMediaPermissions();
-
 export default function useMediaDevices() {
+  const devices = useMediaPermissions();
   const permissions = computed(() => Object.fromEntries(devices.value));
 
   const handleControl = (control: Control) => {
@@ -33,11 +32,12 @@ export default function useMediaDevices() {
         throw createError('You must select at least one device');
       }
 
-      navigator.mediaDevices
-        .getUserMedia(permissions.value)
-        .then((response) => {
-          console.log(response);
-        });
+      navigator.mediaDevices.getUserMedia(permissions.value).then((stream) => {
+        const videoTracks = stream.getVideoTracks();
+        (
+          document.querySelector('video#video-stream') as HTMLVideoElement
+        ).srcObject = stream;
+      });
     }
   };
 
