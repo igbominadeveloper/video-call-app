@@ -2,6 +2,7 @@
 definePageMeta({
   name: 'Snapbyte',
   layout: 'sidebar',
+  middleware: 'redirect',
 });
 
 useHead({
@@ -11,6 +12,6 @@ useHead({
 
 <template>
   <div>
-    <!-- <nuxt-page /> -->
+    <nuxt-page />
   </div>
 </template>
