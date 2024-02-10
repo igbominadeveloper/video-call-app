@@ -5,7 +5,7 @@
       <main class="ml-[290px] col-span-full">
         <div class="px-40 py-6 flex flex-col gap-4 w-full">
           <breadcrumbs />
-          <nuxt-page />
+          <slot />
         </div>
       </main>
     </div>

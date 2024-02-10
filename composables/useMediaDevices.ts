@@ -6,6 +6,12 @@ export default function useMediaDevices() {
   const isStreaming = ref(false);
   const currentStream = ref<MediaStream | null>(null);
 
+  const videoIsOn = computed(
+    () =>
+      currentStream.value?.getVideoTracks() &&
+      currentStream.value.getVideoTracks().length > 0
+  );
+
   const handleControl = (control: Control) => {
     const isSet = devices.value.has(control);
     if (isSet) {
@@ -54,8 +60,9 @@ export default function useMediaDevices() {
   };
 
   return {
-    devices,
     isStreaming,
+    videoIsOn,
+    devices,
     permissions,
     handleControl,
     requestPermission,

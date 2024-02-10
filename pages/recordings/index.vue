@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   name: 'My Recordings',
+  layout: 'sidebar',
 });
 
 const title = 'My Recordings';

@@ -2,7 +2,8 @@
 definePageMeta({
   layout: 'default',
 });
-const { stopStream, requestPermission, isStreaming } = useMediaDevices();
+const { stopStream, requestPermission, isStreaming, videoIsOn } =
+  useMediaDevices();
 
 onMounted(() => {
   if (process.client) {
@@ -27,10 +28,14 @@ onBeforeRouteLeave(() => {
       </header>
 
       <div class="min-w-[965px] min-h-[518px] rounded-lg relative">
-        <video id="video-stream" class="w-full h-full" />
+        <video
+          id="video-stream"
+          class="w-full h-full"
+          v-show="isStreaming && videoIsOn"
+        />
         <div
           class="bg-darkblue w-full h-full absolute inset-0"
-          v-show="!isStreaming"
+          v-show="isStreaming && !videoIsOn"
         />
       </div>
     </div>

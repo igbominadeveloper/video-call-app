@@ -1,5 +1,5 @@
 <template>
   <layout-base>
-    <nuxt-page />
+    <slot />
   </layout-base>
 </template>

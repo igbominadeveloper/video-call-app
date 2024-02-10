@@ -71,7 +71,10 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
     class="h-[5rem] border-b border-b-lightgray grid grid-cols-[306px_2fr_1fr]"
   >
     <header>
-      <nuxt-link to="/" class="h-full flex gap-3 items-center pl-14">
+      <nuxt-link
+        :to="{ name: 'Snapbyte' }"
+        class="h-full flex gap-3 items-center pl-14"
+      >
         <div
           class="bg-orange relative size-12 rounded-xl flex items-center justify-center"
         >
@@ -81,7 +84,7 @@ onClickOutside(menuRef, () => (activeMenuIndex.value = null));
       </nuxt-link>
     </header>
 
-    <nav ref="menuRef">
+    <nav>
       <ul class="flex gap-11 items-center h-full">
         <li
           v-for="(link, index) in links"
