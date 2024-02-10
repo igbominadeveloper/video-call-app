@@ -63,7 +63,7 @@ const classList = computed(
 <template>
   <button
     :class="classList"
-    class="flex items-center justify-center gap-3 font-thin"
+    class="flex cursor-pointer items-center justify-center gap-3 font-thin"
   >
     <slot />
   </button>

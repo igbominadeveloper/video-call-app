@@ -11,7 +11,7 @@ const goLive = () => useRouter().push('/recordings/live');
 </script>
 
 <template>
-  <modal>
+  <base-modal>
     <template #title>New Recording</template>
     <p class="text-darkgray">Save the recording in</p>
 
@@ -34,14 +34,14 @@ const goLive = () => useRouter().push('/recordings/live');
       <p class="my-2">{{ error?.message }}</p>
 
       <div class="flex flex-1 px-10 mt-5">
-        <basebutton
+        <base-button
           type="primary"
           @click="goLive"
           class="flex-1"
           shape="largestRound"
-          >Start Recording</basebutton
+          >Start Recording</base-button
         >
       </div>
     </div>
-  </modal>
+  </base-modal>
 </template>

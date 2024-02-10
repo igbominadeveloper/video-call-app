@@ -24,9 +24,9 @@
       <p class="max-w-[378px] text-darkblue font-medium text-xl">
         Want more controls & better quality recording?
       </p>
-      <basebutton class="max-w-[278px]" type="primary" shape="largestRound">
+      <base-button class="max-w-[278px]" type="primary" shape="largestRound">
         Download the desktop recorder
-      </basebutton>
+      </base-button>
     </div>
   </div>
 </template>

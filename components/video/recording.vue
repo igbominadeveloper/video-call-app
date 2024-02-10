@@ -28,10 +28,10 @@ defineProps<{
       {{ formatDistanceToNow(recording.lastModified) }}
     </p>
 
-    <basebutton
+    <base-button
       class="border-0 p-0 h-0 hover:border-0 opacity-85 hover:opacity-100"
     >
       <Icon name="ph:dots-three-outline" size="28" />
-    </basebutton>
+    </base-button>
   </div>
 </template>

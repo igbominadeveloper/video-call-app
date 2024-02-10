@@ -3,17 +3,17 @@ definePageMeta({
   layout: 'default',
 });
 const {
-  stopStream,
-  requestPermission,
-  checkPermissions,
   isStreaming,
   videoIsOn,
+  stopStream,
+  requestPermissionForAudioAndVideo,
+  // shareScreen,
 } = useMediaDevices();
 
 onMounted(() => {
   if (process.client) {
-    checkPermissions();
-    // requestPermission();
+    // shareScreen();
+    requestPermissionForAudioAndVideo();
   }
 });
 
@@ -45,9 +45,25 @@ onBeforeRouteLeave(() => {
         />
       </div>
     </div>
+    <div
+      class="py-3 w-full relative bg-lightestblue flex justify-center gap-10 items-center"
+    >
+      <base-button>
+        <Icon name="mdi:microphone" class="size-6 text-white" />
+      </base-button>
+      <base-button>
+        <Icon name="heroicons:video-camera" class="size-6 text-white" />
+      </base-button>
+      <base-button>
+        <Icon name="ic:outline-screen-share" class="size-6 text-white" />
+      </base-button>
+      <base-button>
+        <Icon name="material-symbols:call-end-sharp" class="size-6 text-red" />
+      </base-button>
+    </div>
 
-    <basebutton type="primary" class="w-96 mt-10 mx-auto" shape="largestRound"
-      >Start Recording</basebutton
+    <base-button type="primary" class="w-96 mt-10 mx-auto" shape="largestRound"
+      >Start Recording</base-button
     >
   </div>
 </template>

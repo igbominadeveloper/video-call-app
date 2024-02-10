@@ -27,7 +27,7 @@ export default function useMediaDevices() {
     currentStream.value?.getAudioTracks()[0].stop();
   };
 
-  const checkPermissions = () => {
+  const shareScreen = () => {
     navigator.mediaDevices
       .getDisplayMedia({ video: true })
       .then(function (stream) {
@@ -41,7 +41,7 @@ export default function useMediaDevices() {
       });
   };
 
-  const requestPermission = () => {
+  const requestPermissionForAudioAndVideo = () => {
     if (process.client) {
       // we want to see the devices that users have given permission to already
       // when they change some things, we want to update it in the state of devices to ask permission for
@@ -79,8 +79,8 @@ export default function useMediaDevices() {
     devices,
     permissions,
     handleControl,
-    requestPermission,
-    checkPermissions,
+    requestPermissionForAudioAndVideo,
+    shareScreen,
     stopStream,
   };
 }
