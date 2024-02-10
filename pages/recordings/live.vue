@@ -2,12 +2,18 @@
 definePageMeta({
   layout: 'default',
 });
-const { stopStream, requestPermission, isStreaming, videoIsOn } =
-  useMediaDevices();
+const {
+  stopStream,
+  requestPermission,
+  checkPermissions,
+  isStreaming,
+  videoIsOn,
+} = useMediaDevices();
 
 onMounted(() => {
   if (process.client) {
-    requestPermission();
+    checkPermissions();
+    // requestPermission();
   }
 });
 

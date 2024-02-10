@@ -27,6 +27,20 @@ export default function useMediaDevices() {
     currentStream.value?.getAudioTracks()[0].stop();
   };
 
+  const checkPermissions = () => {
+    navigator.mediaDevices
+      .getDisplayMedia({ video: true })
+      .then(function (stream) {
+        console.log({ stream });
+
+        // Permission granted, handle stream
+        // Update radio button state for screen permission granted
+      })
+      .catch(function (err) {
+        // Permission denied or error occurred, handle gracefully
+      });
+  };
+
   const requestPermission = () => {
     if (process.client) {
       // we want to see the devices that users have given permission to already
@@ -66,6 +80,7 @@ export default function useMediaDevices() {
     permissions,
     handleControl,
     requestPermission,
+    checkPermissions,
     stopStream,
   };
 }
