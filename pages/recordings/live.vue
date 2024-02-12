@@ -19,6 +19,8 @@ onMounted(() => {
   }
 });
 
+const quitStream = () => useRouter().push({ name: 'My Recordings' });
+
 onBeforeRouteLeave(() => {
   stopStream();
 });
@@ -35,10 +37,11 @@ onBeforeRouteLeave(() => {
         <span class="text-darkergray text-sm"> Live preview </span>
       </header>
 
-      <div class="min-w-[965px] min-h-[518px] rounded-lg relative">
+      <div
+        class="min-w-[965px] min-h-[518px] max-w-[965px] max-h-[518px] rounded-lg relative"
+      >
         <video
-          height="518px"
-          width="965px"
+          class="h-full w-full"
           id="video-stream"
           v-show="isStreaming && videoIsOn"
         />
@@ -48,7 +51,7 @@ onBeforeRouteLeave(() => {
         />
       </div>
     </div>
-    <video-feed-controls />
+    <video-feed-controls @quit="quitStream" />
     <base-button type="primary" class="w-96 mt-10 mx-auto" shape="largestRound"
       >Start Recording</base-button
     >
