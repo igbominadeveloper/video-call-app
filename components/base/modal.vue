@@ -63,7 +63,7 @@ watch(
   >
     <div
       v-if="showModal"
-      class="absolute min-h-dvh min-w-full inset-0 z-50 grid place-items-center"
+      class="absolute min-h-full min-w-full inset-0 z-50 grid place-items-center"
     >
       <div class="bg-black opacity-40 w-full h-full absolute" />
 

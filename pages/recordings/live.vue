@@ -5,6 +5,8 @@ definePageMeta({
 const {
   isStreaming,
   videoIsOn,
+  devices,
+  permissions,
   stopStream,
   requestPermissionForAudioAndVideo,
   // shareScreen,
@@ -35,8 +37,9 @@ onBeforeRouteLeave(() => {
 
       <div class="min-w-[965px] min-h-[518px] rounded-lg relative">
         <video
+          height="518px"
+          width="965px"
           id="video-stream"
-          class="w-full h-full"
           v-show="isStreaming && videoIsOn"
         />
         <div

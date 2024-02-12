@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { devices, handleControl } = useMediaDevices();
+const { permissions, handleControl } = useMediaDevices();
 
-const screenSelected = computed(() => devices.value.has('screen'));
-const cameraSelected = computed(() => devices.value.has('video'));
-const microphoneSelected = computed(() => devices.value.has('audio'));
+const screenSelected = computed(() => permissions.value.has('screen'));
+const cameraSelected = computed(() => permissions.value.has('video'));
+const microphoneSelected = computed(() => permissions.value.has('audio'));
 
 const error = useError();
 
