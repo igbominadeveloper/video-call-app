@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type Size = 'md' | 'lg';
+type Size = 'md' | 'lg' | 'none';
 type Shape =
   | 'flat'
   | 'smallRound'
@@ -23,6 +23,7 @@ const props = withDefaults(
 );
 
 const sizeMap = new Map<Size, string>([
+  ['none', ''],
   ['md', 'py-3 px-6 text-sm'],
   ['lg', 'py-5 px-8 text-lg'],
 ]);
