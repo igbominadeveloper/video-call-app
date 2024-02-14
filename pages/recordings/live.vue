@@ -9,7 +9,7 @@ const {
   permissions,
   stopStream,
   requestPermissionForAudioAndVideo,
-  // shareScreen,
+  shareScreen,
 } = useMediaDevices();
 
 onMounted(() => {
@@ -51,7 +51,7 @@ onBeforeRouteLeave(() => {
         />
       </div>
     </div>
-    <video-feed-controls @quit="quitStream" />
+    <video-feed-controls @quit="quitStream" @share-screen="shareScreen" />
     <base-button type="primary" class="w-96 mt-10 mx-auto" shape="largestRound"
       >Start Recording</base-button
     >

@@ -117,7 +117,7 @@ const goLive = () => {
   </div>
 
   <client-only>
-    <video-new-recording
+    <lazy-video-new-recording
       :open="showNewRequestModal"
       @close="showNewRequestModal = false"
     />
