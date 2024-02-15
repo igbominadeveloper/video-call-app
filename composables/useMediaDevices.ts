@@ -1,11 +1,10 @@
 import useMediaPermissions from '~/stores/mediaPermissions';
+import useDeviceStates from '~/stores/deviceStates';
+import { Control, DeviceStatus } from '~/enums';
 
 export default function useMediaDevices() {
-  const permissions = useMediaPermissions();
-  const devices = computed(() => Object.fromEntries(permissions.value));
   const isStreaming = ref(false);
   const currentStream = ref<MediaStream | null>(null);
-  const deviceStates = ref;
 
   /*
   - no video permission
@@ -23,6 +22,9 @@ export default function useMediaDevices() {
         currentStream.value.getVideoTracks().length > 0) ??
       false
   );
+
+  const permissions = useMediaPermissions();
+  const devices = computed(() => Object.fromEntries(permissions.value));
 
   const handleControl = (control: Control) => {
     const isSet = permissions.value.has(control);
@@ -52,6 +54,9 @@ export default function useMediaDevices() {
       });
   };
 
+  const currentAudioTrack = ref<MediaStreamTrack | null>(null);
+  const currentVideoTrack = ref<MediaStreamTrack | null>(null);
+
   const requestPermissionForAudioAndVideo = () => {
     if (process.client) {
       // we want to see the devices that users have given permission to already
@@ -71,8 +76,10 @@ export default function useMediaDevices() {
       }
 
       navigator.mediaDevices.getUserMedia(devices.value).then((stream) => {
-        const videoTracks = stream.getVideoTracks();
-        console.log(videoTracks, '>>>>');
+        const [videoTrack, audioTrack] = stream.getTracks();
+        currentAudioTrack.value = audioTrack;
+        currentVideoTrack.value = videoTrack;
+        addEventListeners();
 
         const video = document.querySelector(
           'video#video-stream'
@@ -86,11 +93,45 @@ export default function useMediaDevices() {
     }
   };
 
+  const addEventListeners = () => {
+    if (currentAudioTrack.value) {
+      currentAudioTrack.value.addEventListener('ended', () => {
+        deviceStatesMap.value.set(Control.Audio, DeviceStatus.Off);
+      });
+    }
+
+    if (currentVideoTrack.value) {
+      currentVideoTrack.value.addEventListener('ended', () => {
+        deviceStatesMap.value.set(Control.Video, DeviceStatus.Off);
+      });
+    }
+  };
+
+  /*
+  device states map to provide a storage location for device states
+  */
+  const deviceStatesMap = ref(useDeviceStates());
+  const deviceStates = computed(() =>
+    Object.fromEntries(deviceStatesMap.value)
+  );
+
+  const toggleDeviceState = (device: Control) => {
+    const currentState = deviceStatesMap.value.get(device) ?? DeviceStatus.Off;
+    if (currentState === DeviceStatus.Off) {
+      deviceStatesMap.value.set(device, DeviceStatus.On);
+    } else {
+      deviceStatesMap.value.set(device, DeviceStatus.Off);
+    }
+  };
+
   return {
     isStreaming,
     videoIsOn,
     devices,
     permissions,
+    deviceStates,
+
+    toggleDeviceState,
     handleControl,
     requestPermissionForAudioAndVideo,
     shareScreen,

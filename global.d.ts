@@ -1,3 +1,4 @@
+import { Control, DeviceStatus } from './enums';
 declare global {
   interface Recording {
     duration: number;
@@ -10,7 +11,7 @@ declare global {
     lastModified: string;
   }
 
-  type Control = 'audio' | 'screen' | 'video';
+  type DeviceState = Map<Control, DeviceStatus>;
 }
 
 export {};

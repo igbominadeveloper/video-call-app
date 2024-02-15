@@ -1,3 +1,5 @@
+import { Control } from '~/enums';
+
 export default function mediaPermissions() {
   return useLocalStorage(
     'permissions',

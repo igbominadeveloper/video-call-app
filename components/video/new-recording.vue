@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { Control } from '~/enums';
+
 const { permissions, handleControl } = useMediaDevices();
 
-const screenSelected = computed(() => permissions.value.has('screen'));
-const cameraSelected = computed(() => permissions.value.has('video'));
-const microphoneSelected = computed(() => permissions.value.has('audio'));
+const screenSelected = computed(() => permissions.value.has(Control.Screen));
+const cameraSelected = computed(() => permissions.value.has(Control.Video));
+const microphoneSelected = computed(() => permissions.value.has(Control.Audio));
+
+const control = { Screen: 'screen' };
+console.log(control);
 
 const error = useError();
 
@@ -19,16 +24,13 @@ const goLive = () => useRouter().push('/recordings/live');
       <video-recording-control
         title="Record screen"
         :selected="screenSelected"
-        @selected="handleControl('screen')"
       />
       <video-recording-control
         title="Record camera"
         :selected="cameraSelected"
-        @selected="handleControl('video')"
       />
       <video-recording-control
         title="Record microphone"
-        @selected="handleControl('audio')"
         :selected="microphoneSelected"
       />
       <p class="my-2">{{ error?.message }}</p>

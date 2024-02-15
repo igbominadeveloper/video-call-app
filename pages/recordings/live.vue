@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { Control } from '~/enums';
+
 definePageMeta({
   layout: 'default',
 });
 const {
   isStreaming,
   videoIsOn,
-  devices,
-  permissions,
+  // deviceStates,
+  toggleDeviceState,
   stopStream,
   requestPermissionForAudioAndVideo,
   shareScreen,
@@ -51,7 +53,12 @@ onBeforeRouteLeave(() => {
         />
       </div>
     </div>
-    <video-feed-controls @quit="quitStream" @share-screen="shareScreen" />
+    <video-feed-controls
+      @quit="quitStream"
+      @share-screen="shareScreen"
+      @microphone="toggleDeviceState(Control.Audio)"
+      @video="toggleDeviceState(Control.Video)"
+    />
     <base-button type="primary" class="w-96 mt-10 mx-auto" shape="largestRound"
       >Start Recording</base-button
     >
